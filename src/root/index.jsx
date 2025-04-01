@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
 //pages
-import { HomePage } from "../pages";
+import { HomePage, ChannelPage, Search, VideoDetail } from "../pages";
 
 const Root = () => {
   const routes = createBrowserRouter([
@@ -15,6 +15,18 @@ const Root = () => {
         {
           index: true,
           element: <HomePage />,
+        },
+        {
+          path: "channelPage/:id?",
+          element: <ChannelPage />,
+        },
+        {
+          path: "search/:id?",
+          element: <Search />,
+        },
+        {
+          path: "videoDetail/:id?",
+          element: <VideoDetail />,
         },
       ],
     },
