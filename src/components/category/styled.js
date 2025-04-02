@@ -15,7 +15,8 @@ const Button = styled.button`
   transition: all 0.3s linear;
   background-color: ${(props) =>
     props.isSelected ? "#76323f" : "transparent"};
-  color: ${(props) => (props.isSelected ? "#fff" : "var(--secondaryColor)")};
+  color: ${({ $isSelected }) =>
+    $isSelected ? "#fff" : "var(--secondaryColor)"};
 
   &:hover {
     background-color: var(--secondaryColor) !important;

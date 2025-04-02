@@ -2,12 +2,31 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 
 //react
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //components
 import { Category, Videos } from "../../components";
 
+//service
+import { ApiService } from "../../service/api.service";
+
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState("New");
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await ApiService.fetching(
+          `search?part=snippet&q${selectedCategory}`
+        );
+        setVideos(data.items);
+      } catch (error) {
+        console.error("Xatolik yuz berdi:", error);
+      }
+    };
+
+    fetchData();
+  }, [selectedCategory]);
 
   const selectedCategoryHandler = (category) => setSelectedCategory(category);
   return (
@@ -21,7 +40,7 @@ const HomePage = () => {
           <Typography mb={2} fontWeight={"bold"} variant="h4">
             {selectedCategory} <span style={{ color: "#76323f" }}>Videos</span>
           </Typography>
-          <Videos />
+          <Videos videos={videos} />
         </Container>
       </Box>
     </Stack>
