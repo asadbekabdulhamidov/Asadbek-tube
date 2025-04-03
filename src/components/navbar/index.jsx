@@ -5,11 +5,11 @@ import { SearchInput } from "../index";
 const Navbar = () => {
   return (
     <Stack
-      direction={"row"}
       justifyContent={"space-between"}
       alignItems={"center"}
       p={2}
       sx={{
+        flexDirection: { md: "row" },
         position: "sticky",
         top: 0,
         zIndex: 999,
