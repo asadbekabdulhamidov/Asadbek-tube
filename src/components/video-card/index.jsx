@@ -11,8 +11,6 @@ import moment from "moment";
 import { CheckCircle } from "@mui/icons-material";
 
 const VideoCard = ({ video }) => {
-  console.log(video);
-
   return (
     <Card sx={{ width: "320px", boxShadow: "none", borderRadius: 0 }}>
       <CardMedia
